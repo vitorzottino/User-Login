@@ -5,11 +5,11 @@ import java.awt.Cursor;
 import java.awt.Dimension;
 import java.awt.EventQueue;
 import java.awt.Font;
-import java.awt.Toolkit;
 import java.awt.font.TextAttribute;
 import java.util.HashMap;
 import java.util.Map;
 
+import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
@@ -44,6 +44,7 @@ public class App extends JFrame {
 		setBounds(100, 100, 510, 320);
 		setLocationRelativeTo(null);
 		contentPane = new JPanel();
+		contentPane.setBackground(Color.BLACK);
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
@@ -58,25 +59,29 @@ public class App extends JFrame {
 		contentPane.add(textField_1);
 
 		JLabel lblNewLabel = new JLabel("User:");
+		lblNewLabel.setForeground(Color.WHITE);
 		lblNewLabel.setHorizontalAlignment(SwingConstants.CENTER);
 		lblNewLabel.setBounds(145, 58, 80, 15);
 		contentPane.add(lblNewLabel);
 
 		JLabel lblPassword = new JLabel("Password:");
+		lblPassword.setForeground(Color.WHITE);
 		lblPassword.setHorizontalAlignment(SwingConstants.CENTER);
 		lblPassword.setBounds(145, 109, 80, 15);
 		contentPane.add(lblPassword);
 
 		JButton loginButton = new JButton("LOGIN");
+		loginButton.setBackground(Color.WHITE);
 		loginButton.setBounds(149, 176, 100, 50);
 		contentPane.add(loginButton);
 
 		JButton btnCancel = new JButton("CANCEL");
+		btnCancel.setBackground(Color.WHITE);
 		btnCancel.setBounds(259, 176, 100, 50);
 		contentPane.add(btnCancel);
 
 		JLabel hyperlink = new JLabel("New User");
-		hyperlink.setForeground(Color.BLUE);
+		hyperlink.setForeground(Color.WHITE);
 		hyperlink.setBounds(229, 237, 86, 20);
 		getContentPane().add(hyperlink);
 		hyperlink.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
@@ -84,6 +89,19 @@ public class App extends JFrame {
 		Map<TextAttribute, Object> attributes = new HashMap<>(font.getAttributes());
 		attributes.put(TextAttribute.UNDERLINE, TextAttribute.UNDERLINE_ON);
 		hyperlink.setFont(font.deriveFont(attributes));
+		
+		JLabel logoLabel = new JLabel();
+		logoLabel.setIcon(new ImageIcon("img/logo.png"));
+		Dimension size = logoLabel.getPreferredSize();
+		logoLabel.setHorizontalAlignment(JLabel.CENTER);
+        logoLabel.setVerticalAlignment(JLabel.CENTER);
+        
+		logoLabel.setBounds(25, 25, 90, 90);
+		contentPane.add(logoLabel);
+		
+		
+		
+		
 
 	}
 }
