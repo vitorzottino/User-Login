@@ -2,15 +2,15 @@ package login;
 
 import java.awt.Color;
 import java.awt.Cursor;
-import java.awt.Dimension;
-import java.awt.EventQueue;
 import java.awt.Font;
+import java.awt.event.MouseEvent;
+import java.awt.event.MouseListener;
 import java.awt.font.TextAttribute;
 import java.util.HashMap;
 import java.util.Map;
 
+import javax.swing.BorderFactory;
 import javax.swing.ImageIcon;
-import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
@@ -18,24 +18,18 @@ import javax.swing.JTextField;
 import javax.swing.SwingConstants;
 import javax.swing.border.EmptyBorder;
 
+import home.Home;
+import newUser.newUser;
+
 public class App extends JFrame {
 
 	private JPanel contentPane;
-	private JTextField textField;
-	private JTextField textField_1;
+	private JTextField txtUsername;
+	private JTextField txtPassword;
 
-	public static void main(String[] args) {
-		EventQueue.invokeLater(new Runnable() {
-			public void run() {
-				try {
-					App frame = new App();
-					frame.setVisible(true);
-				} catch (Exception e) {
-					e.printStackTrace();
-				}
-			}
-		});
-	}
+	Home homepage = new Home();
+	newUser userpage = new newUser();
+	JLabel errorLabel = new JLabel();
 
 	public App() {
 		setTitle("App");
@@ -48,60 +42,141 @@ public class App extends JFrame {
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
-		textField = new JTextField();
-		textField.setBounds(229, 55, 154, 20);
-		contentPane.add(textField);
-		textField.setColumns(10);
+		txtUsername = new JTextField();
+		txtUsername.setBounds(260, 70, 120, 20);
+		contentPane.add(txtUsername);
+		txtUsername.setColumns(10);
 
-		textField_1 = new JTextField();
-		textField_1.setColumns(10);
-		textField_1.setBounds(229, 106, 154, 20);
-		contentPane.add(textField_1);
+		txtPassword = new JTextField();
+		txtPassword.setColumns(10);
+		txtPassword.setBounds(260, 115, 120, 20);
+		contentPane.add(txtPassword);
 
-		JLabel lblNewLabel = new JLabel("User:");
+		JLabel lblNewLabel = new JLabel("Username:");
+		lblNewLabel.setFont(new Font("SansSerif", Font.BOLD, 15));
 		lblNewLabel.setForeground(Color.WHITE);
 		lblNewLabel.setHorizontalAlignment(SwingConstants.CENTER);
-		lblNewLabel.setBounds(145, 58, 80, 15);
+		lblNewLabel.setBounds(120, 70, 80, 20);
 		contentPane.add(lblNewLabel);
 
 		JLabel lblPassword = new JLabel("Password:");
+		lblPassword.setFont(new Font("SansSerif", Font.BOLD, 15));
 		lblPassword.setForeground(Color.WHITE);
 		lblPassword.setHorizontalAlignment(SwingConstants.CENTER);
-		lblPassword.setBounds(145, 109, 80, 15);
+		lblPassword.setBounds(120, 115, 80, 20);
 		contentPane.add(lblPassword);
 
-		JButton loginButton = new JButton("LOGIN");
-		loginButton.setBackground(Color.WHITE);
-		loginButton.setBounds(149, 176, 100, 50);
-		contentPane.add(loginButton);
+		JLabel lblLogin = new JLabel("LOGIN");
+		lblLogin.setHorizontalAlignment(SwingConstants.CENTER);
+		lblLogin.setForeground(Color.WHITE);
+		lblLogin.setBorder(BorderFactory.createLineBorder(Color.white, 1));
+		lblLogin.setFont(new Font("SansSerif", Font.BOLD, 18));
+		lblLogin.setBounds(120, 165, 260, 25);
+		contentPane.add(lblLogin);
 
-		JButton btnCancel = new JButton("CANCEL");
-		btnCancel.setBackground(Color.WHITE);
-		btnCancel.setBounds(259, 176, 100, 50);
-		contentPane.add(btnCancel);
+		lblLogin.addMouseListener(new MouseListener() {
 
-		JLabel hyperlink = new JLabel("New User");
+			public void mouseReleased(MouseEvent e) {
+
+			}
+
+			public void mousePressed(MouseEvent e) {
+
+			}
+
+			public void mouseExited(MouseEvent e) {
+				lblLogin.setBorder(BorderFactory.createLineBorder(Color.white, 1));
+
+			}
+
+			public void mouseEntered(MouseEvent e) {
+				lblLogin.setBorder(BorderFactory.createLineBorder(Color.green, 1));
+				lblLogin.setCursor(Cursor.getPredefinedCursor(HAND_CURSOR));
+
+			}
+
+			public void mouseClicked(MouseEvent e) {
+
+				if (txtUsername.getText().isEmpty() || txtPassword.getText().isEmpty()) {
+					errorLabel.setText("* Mandatory Fields Missing!");
+
+				}
+
+			}
+		});
+
+		JLabel hyperlink = new JLabel("SIGN IN");
+		hyperlink.setHorizontalAlignment(SwingConstants.CENTER);
 		hyperlink.setForeground(Color.WHITE);
-		hyperlink.setBounds(229, 237, 86, 20);
+		hyperlink.setBorder(BorderFactory.createLineBorder(Color.white, 1));
+		hyperlink.setBounds(120, 210, 260, 25);
 		getContentPane().add(hyperlink);
 		hyperlink.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
-		Font font = hyperlink.getFont();
-		Map<TextAttribute, Object> attributes = new HashMap<>(font.getAttributes());
-		attributes.put(TextAttribute.UNDERLINE, TextAttribute.UNDERLINE_ON);
-		hyperlink.setFont(font.deriveFont(attributes));
-		
+
+		hyperlink.setFont(new Font("SansSerif", Font.BOLD, 18));
+
+		hyperlink.addMouseListener(new MouseListener() {
+
+			public void mouseClicked(MouseEvent e) {
+				dispose();
+				userpage.setVisible(true);
+
+			}
+
+			public void mousePressed(MouseEvent e) {
+
+			}
+
+			public void mouseReleased(MouseEvent e) {
+
+			}
+
+			public void mouseEntered(MouseEvent e) {
+				hyperlink.setBorder(BorderFactory.createLineBorder(Color.green, 1));
+
+			}
+
+			public void mouseExited(MouseEvent e) {
+				hyperlink.setBorder(BorderFactory.createLineBorder(Color.white, 1));
+				hyperlink.setForeground(Color.white);
+
+			}
+		});
+
 		JLabel logoLabel = new JLabel();
 		logoLabel.setIcon(new ImageIcon("img/logo.png"));
-		Dimension size = logoLabel.getPreferredSize();
+
 		logoLabel.setHorizontalAlignment(JLabel.CENTER);
-        logoLabel.setVerticalAlignment(JLabel.CENTER);
-        
-		logoLabel.setBounds(25, 25, 90, 90);
+		logoLabel.setVerticalAlignment(JLabel.CENTER);
+
+		logoLabel.setBounds(10, 11, 90, 90);
 		contentPane.add(logoLabel);
+
+		errorLabel.setHorizontalAlignment(SwingConstants.CENTER);
+		errorLabel.setForeground(Color.RED);
+		errorLabel.setFont(new Font("SansSerif", Font.BOLD, 14));
+		errorLabel.setBounds(120, 250, 260, 20);
+		contentPane.add(errorLabel);
 		
+		JLabel lblNewLabel_1 = new JLabel("*");
+		lblNewLabel_1.setForeground(Color.RED);
+		lblNewLabel_1.setFont(new Font("SansSerif", Font.BOLD, 12));
+		lblNewLabel_1.setBounds(390, 65, 20, 20);
+		contentPane.add(lblNewLabel_1);
 		
-		
-		
+		JLabel lblNewLabel_1_1 = new JLabel("*");
+		lblNewLabel_1_1.setForeground(Color.RED);
+		lblNewLabel_1_1.setFont(new Font("SansSerif", Font.BOLD, 12));
+		lblNewLabel_1_1.setBounds(390, 110, 20, 20);
+		contentPane.add(lblNewLabel_1_1);
 
 	}
+
+	public static void main(String[] args) {
+
+		App loginpage = new App();
+		loginpage.setVisible(true);
+
+	}
+
 }
