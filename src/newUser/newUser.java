@@ -6,6 +6,8 @@ import java.awt.EventQueue;
 import java.awt.Font;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
+import java.util.ArrayList;
+import java.util.HashMap;
 
 import javax.swing.ImageIcon;
 import javax.swing.JFrame;
@@ -17,14 +19,17 @@ import javax.swing.border.EmptyBorder;
 
 import alerts.userCreated;
 import login.App;
+import login.Usuario;
 
 public class newUser extends JFrame {
 
 	private JPanel contentPane;
 	private JTextField txtUsername;
 	private JTextField textPassword;
+	public static HashMap<String, Usuario> userMap = new HashMap<String, Usuario>();
 	JLabel errorLabel = new JLabel();
 	String error, username, password;
+	Usuario user = new Usuario();
 
 	public static void main(String[] args) {
 		EventQueue.invokeLater(new Runnable() {
@@ -39,6 +44,7 @@ public class newUser extends JFrame {
 		});
 	}
 
+	
 	public newUser() {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 510, 320);
@@ -82,15 +88,19 @@ public class newUser extends JFrame {
 
 			public void mouseClicked(MouseEvent e) {
 
-				System.out.println(txtUsername.getText());
-
 				if (txtUsername.getText().isEmpty() || textPassword.getText().isEmpty()) {
 					errorLabel.setText("* Mandatory Fields Missing!");
 
 				} else {
 					errorLabel.setText(null);
-					username = txtUsername.getText();
-					password = textPassword.getText();
+					user.username = txtUsername.getText();
+					user.password = textPassword.getText();
+					
+					userMap.put(user.username, user); 
+					new userCreated().setVisible(true);
+					dispose();
+					System.out.println(userMap.toString());
+					//System.out.println(userMap.get(txtUsername.getText()).getPassword());
 				}
 
 			}
@@ -172,7 +182,7 @@ public class newUser extends JFrame {
 		lblNewLabel_1_1.setForeground(Color.RED);
 		lblNewLabel_1_1.setBounds(390, 110, 20, 20);
 		contentPane.add(lblNewLabel_1_1);
-		
+
 		JLabel logoLabel = new JLabel();
 		logoLabel.setIcon(new ImageIcon("img/logo.png"));
 		logoLabel.setVerticalAlignment(SwingConstants.CENTER);

@@ -1,28 +1,19 @@
 package alerts;
 
-import java.awt.EventQueue;
-
-import javax.swing.JFrame;
-import javax.swing.JPanel;
-import javax.swing.border.EmptyBorder;
 import java.awt.Color;
-import javax.swing.JLabel;
+import java.awt.EventQueue;
 import java.awt.Font;
-import java.awt.GridLayout;
-import java.awt.GridBagLayout;
-import java.awt.GridBagConstraints;
-import java.awt.FlowLayout;
-import javax.swing.GroupLayout;
-import javax.swing.GroupLayout.Alignment;
-import net.miginfocom.swing.MigLayout;
-import com.jgoodies.forms.layout.FormLayout;
-import com.jgoodies.forms.layout.ColumnSpec;
-import com.jgoodies.forms.layout.FormSpecs;
-import com.jgoodies.forms.layout.RowSpec;
-import javax.swing.SpringLayout;
-import javax.swing.BoxLayout;
+import java.awt.event.MouseEvent;
+import java.awt.event.MouseListener;
+
+import javax.swing.JButton;
+import javax.swing.JFrame;
+import javax.swing.JLabel;
+import javax.swing.JPanel;
 import javax.swing.SwingConstants;
-import java.awt.BorderLayout;
+import javax.swing.border.EmptyBorder;
+
+import login.App;
 
 public class userCreated extends JFrame {
 
@@ -42,6 +33,7 @@ public class userCreated extends JFrame {
 	}
 
 	public userCreated() {
+		setResizable(false);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 200, 200);
 		setLocationRelativeTo(null);
@@ -50,13 +42,50 @@ public class userCreated extends JFrame {
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 
 		setContentPane(contentPane);
-		contentPane.setLayout(new BorderLayout(0, 0));
+		contentPane.setLayout(null);
 
 		JLabel lblNewLabel = new JLabel("User Created!");
+		lblNewLabel.setBounds(0, 0, 184, 107);
 		lblNewLabel.setHorizontalAlignment(SwingConstants.CENTER);
 		lblNewLabel.setFont(new Font("SansSerif", Font.BOLD, 16));
 		lblNewLabel.setForeground(Color.WHITE);
 		contentPane.add(lblNewLabel);
+
+		JButton btnNewButton = new JButton("OK");
+		btnNewButton.setForeground(Color.WHITE);
+		btnNewButton.setFont(new Font("SansSerif", Font.BOLD, 14));
+		btnNewButton.setBounds(45, 120, 90, 25);
+		btnNewButton.setBorderPainted(false);
+		btnNewButton.setFocusPainted(false);
+		btnNewButton.setContentAreaFilled(false);
+		contentPane.add(btnNewButton);
+
+		btnNewButton.addMouseListener(new MouseListener() {
+
+			public void mouseReleased(MouseEvent e) {
+
+			}
+
+			public void mousePressed(MouseEvent e) {
+
+			}
+
+			public void mouseExited(MouseEvent e) {
+				btnNewButton.setForeground(Color.white);
+			}
+
+			public void mouseEntered(MouseEvent e) {
+				btnNewButton.setForeground(Color.green);
+
+			}
+
+			public void mouseClicked(MouseEvent e) {
+				dispose();
+				new App().setVisible(true);
+				
+
+			}
+		});
 	}
 
 }

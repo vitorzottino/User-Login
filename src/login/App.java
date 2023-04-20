@@ -5,9 +5,6 @@ import java.awt.Cursor;
 import java.awt.Font;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
-import java.awt.font.TextAttribute;
-import java.util.HashMap;
-import java.util.Map;
 
 import javax.swing.BorderFactory;
 import javax.swing.ImageIcon;
@@ -18,8 +15,10 @@ import javax.swing.JTextField;
 import javax.swing.SwingConstants;
 import javax.swing.border.EmptyBorder;
 
+import alerts.userCreated;
 import home.Home;
 import newUser.newUser;
+import login.Usuario;
 
 public class App extends JFrame {
 
@@ -30,6 +29,8 @@ public class App extends JFrame {
 	Home homepage = new Home();
 	newUser userpage = new newUser();
 	JLabel errorLabel = new JLabel();
+	Usuario user = new Usuario();
+	
 
 	public App() {
 		setTitle("App");
@@ -100,6 +101,20 @@ public class App extends JFrame {
 				if (txtUsername.getText().isEmpty() || txtPassword.getText().isEmpty()) {
 					errorLabel.setText("* Mandatory Fields Missing!");
 
+				}
+				else {
+					errorLabel.setText(null);
+					System.out.println(newUser.userMap.get(txtUsername.getText()).getPassword());
+					
+					 
+					if (userpage.userMap.containsKey(txtUsername.getText())) {
+						
+						
+						
+						
+						
+					}
+					
 				}
 
 			}
