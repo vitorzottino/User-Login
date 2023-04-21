@@ -27,6 +27,7 @@ public class newUser extends JFrame {
 	private JTextField txtUsername;
 	private JTextField textPassword;
 	public static HashMap<String, Usuario> userMap = new HashMap<String, Usuario>();
+	
 	JLabel errorLabel = new JLabel();
 	String error, username, password;
 	Usuario user = new Usuario();
@@ -57,8 +58,8 @@ public class newUser extends JFrame {
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
 
-		JLabel signInLabel = new JLabel("SIGN IN");
-		signInLabel.setBounds(120, 200, 80, 25);
+		JLabel signInLabel = new JLabel("REGISTER");
+		signInLabel.setBounds(200, 184, 100, 25);
 		signInLabel.setFont(new Font("SansSerif", Font.BOLD, 18));
 		signInLabel.setForeground(Color.WHITE);
 		signInLabel.setHorizontalAlignment(JLabel.CENTER);
@@ -136,7 +137,7 @@ public class newUser extends JFrame {
 		lblBack.setHorizontalAlignment(SwingConstants.CENTER);
 		lblBack.setForeground(Color.WHITE);
 		lblBack.setFont(new Font("SansSerif", Font.BOLD, 18));
-		lblBack.setBounds(300, 200, 80, 25);
+		lblBack.setBounds(200, 227, 100, 25);
 		contentPane.add(lblBack);
 
 		lblBack.addMouseListener(new MouseListener() {
@@ -189,6 +190,8 @@ public class newUser extends JFrame {
 		logoLabel.setHorizontalAlignment(SwingConstants.CENTER);
 		logoLabel.setBounds(10, 11, 90, 90);
 		contentPane.add(logoLabel);
+		
+		
 
 	}
 }

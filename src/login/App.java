@@ -15,10 +15,8 @@ import javax.swing.JTextField;
 import javax.swing.SwingConstants;
 import javax.swing.border.EmptyBorder;
 
-import alerts.userCreated;
-import home.Home;
+import infos.Vision;
 import newUser.newUser;
-import login.Usuario;
 
 public class App extends JFrame {
 
@@ -26,11 +24,10 @@ public class App extends JFrame {
 	private JTextField txtUsername;
 	private JTextField txtPassword;
 
-	Home homepage = new Home();
+	
 	newUser userpage = new newUser();
 	JLabel errorLabel = new JLabel();
 	Usuario user = new Usuario();
-	
 
 	public App() {
 		setTitle("App");
@@ -101,20 +98,21 @@ public class App extends JFrame {
 				if (txtUsername.getText().isEmpty() || txtPassword.getText().isEmpty()) {
 					errorLabel.setText("* Mandatory Fields Missing!");
 
-				}
-				else {
+				} else {
 					errorLabel.setText(null);
-					System.out.println(newUser.userMap.get(txtUsername.getText()).getPassword());
-					
-					 
-					if (userpage.userMap.containsKey(txtUsername.getText())) {
-						
-						
-						
-						
-						
+
+					if (newUser.userMap.containsKey(txtUsername.getText())) {
+						if (newUser.userMap.get(txtUsername.getText()).getPassword().equals(txtPassword.getText())) {
+							new Vision().setVisible(true);
+							dispose();
+						} else {
+							errorLabel.setText("Wrong Username/Password");
+						}
+
+					} else {
+						errorLabel.setText("Wrong Username/Password");
 					}
-					
+
 				}
 
 			}
@@ -172,13 +170,13 @@ public class App extends JFrame {
 		errorLabel.setFont(new Font("SansSerif", Font.BOLD, 14));
 		errorLabel.setBounds(120, 250, 260, 20);
 		contentPane.add(errorLabel);
-		
+
 		JLabel lblNewLabel_1 = new JLabel("*");
 		lblNewLabel_1.setForeground(Color.RED);
 		lblNewLabel_1.setFont(new Font("SansSerif", Font.BOLD, 12));
 		lblNewLabel_1.setBounds(390, 65, 20, 20);
 		contentPane.add(lblNewLabel_1);
-		
+
 		JLabel lblNewLabel_1_1 = new JLabel("*");
 		lblNewLabel_1_1.setForeground(Color.RED);
 		lblNewLabel_1_1.setFont(new Font("SansSerif", Font.BOLD, 12));
