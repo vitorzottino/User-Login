@@ -27,7 +27,7 @@ public class newUser extends JFrame {
 	private JTextField txtUsername;
 	private JTextField textPassword;
 	public static HashMap<String, Usuario> userMap = new HashMap<String, Usuario>();
-	
+
 	JLabel errorLabel = new JLabel();
 	String error, username, password;
 	Usuario user = new Usuario();
@@ -45,7 +45,6 @@ public class newUser extends JFrame {
 		});
 	}
 
-	
 	public newUser() {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 510, 320);
@@ -94,14 +93,17 @@ public class newUser extends JFrame {
 
 				} else {
 					errorLabel.setText(null);
-					user.username = txtUsername.getText();
-					user.password = textPassword.getText();
-					
-					userMap.put(user.username, user); 
-					new userCreated().setVisible(true);
-					dispose();
-					System.out.println(userMap.toString());
-					//System.out.println(userMap.get(txtUsername.getText()).getPassword());
+					if (!userMap.containsKey(txtUsername.getText())) {
+						user.username = txtUsername.getText();
+						user.password = textPassword.getText();
+						userMap.put(user.username, user);
+						new userCreated().setVisible(true);
+						dispose();
+					} else {
+						errorLabel.setText("User Already Exists!");
+
+					}
+
 				}
 
 			}
@@ -169,7 +171,7 @@ public class newUser extends JFrame {
 		errorLabel.setHorizontalAlignment(SwingConstants.CENTER);
 		errorLabel.setForeground(Color.RED);
 		errorLabel.setFont(new Font("SansSerif", Font.BOLD, 14));
-		errorLabel.setBounds(120, 245, 260, 20);
+		errorLabel.setBounds(120, 255, 260, 20);
 		contentPane.add(errorLabel);
 
 		JLabel lblNewLabel_1 = new JLabel("*");
@@ -190,8 +192,6 @@ public class newUser extends JFrame {
 		logoLabel.setHorizontalAlignment(SwingConstants.CENTER);
 		logoLabel.setBounds(10, 11, 90, 90);
 		contentPane.add(logoLabel);
-		
-		
 
 	}
 }
