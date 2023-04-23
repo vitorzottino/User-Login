@@ -3,6 +3,7 @@ package login;
 import java.awt.Color;
 import java.awt.Cursor;
 import java.awt.Font;
+import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 
@@ -24,7 +25,6 @@ public class App extends JFrame {
 	private JTextField txtUsername;
 	private JTextField txtPassword;
 
-	
 	newUser userpage = new newUser();
 	JLabel errorLabel = new JLabel();
 	Usuario user = new Usuario();
@@ -69,7 +69,7 @@ public class App extends JFrame {
 		lblLogin.setForeground(Color.WHITE);
 		lblLogin.setBorder(BorderFactory.createLineBorder(Color.white, 1));
 		lblLogin.setFont(new Font("SansSerif", Font.BOLD, 18));
-		lblLogin.setBounds(120, 165, 260, 25);
+		lblLogin.setBounds(120, 160, 260, 25);
 		contentPane.add(lblLogin);
 
 		lblLogin.addMouseListener(new MouseListener() {
@@ -122,7 +122,7 @@ public class App extends JFrame {
 		hyperlink.setHorizontalAlignment(SwingConstants.CENTER);
 		hyperlink.setForeground(Color.WHITE);
 		hyperlink.setBorder(BorderFactory.createLineBorder(Color.white, 1));
-		hyperlink.setBounds(120, 210, 260, 25);
+		hyperlink.setBounds(120, 190, 260, 25);
 		getContentPane().add(hyperlink);
 		hyperlink.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
 
@@ -168,7 +168,7 @@ public class App extends JFrame {
 		errorLabel.setHorizontalAlignment(SwingConstants.CENTER);
 		errorLabel.setForeground(Color.RED);
 		errorLabel.setFont(new Font("SansSerif", Font.BOLD, 14));
-		errorLabel.setBounds(120, 250, 260, 20);
+		errorLabel.setBounds(120, 255, 260, 20);
 		contentPane.add(errorLabel);
 
 		JLabel lblNewLabel_1 = new JLabel("*");
@@ -183,6 +183,36 @@ public class App extends JFrame {
 		lblNewLabel_1_1.setBounds(390, 110, 20, 20);
 		contentPane.add(lblNewLabel_1_1);
 
+		JLabel lblForgotPassword = new JLabel("FORGOT PASSWORD ?");
+		lblForgotPassword.setHorizontalAlignment(SwingConstants.CENTER);
+		lblForgotPassword.setForeground(Color.WHITE);
+		lblForgotPassword.setFont(new Font("SansSerif", Font.BOLD, 11));
+		lblForgotPassword.setBounds(190, 220, 120, 25);
+		contentPane.add(lblForgotPassword);
+		lblForgotPassword.addMouseListener(new MouseListener() {
+
+			public void mouseReleased(MouseEvent e) {
+
+			}
+
+			public void mousePressed(MouseEvent e) {
+
+			}
+
+			public void mouseExited(MouseEvent e) {
+				lblForgotPassword.setForeground(Color.WHITE);
+
+			}
+
+			public void mouseEntered(MouseEvent e) {
+				lblForgotPassword.setForeground(Color.GREEN);
+			}
+
+			public void mouseClicked(MouseEvent e) {
+
+			}
+		});
+
 	}
 
 	public static void main(String[] args) {
@@ -191,5 +221,4 @@ public class App extends JFrame {
 		loginpage.setVisible(true);
 
 	}
-
 }
