@@ -15,7 +15,7 @@ import javax.swing.border.EmptyBorder;
 
 import login.App;
 
-public class userCreated extends JFrame {
+public class UserCreated extends JFrame {
 
 	private JPanel contentPane;
 
@@ -23,7 +23,7 @@ public class userCreated extends JFrame {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					userCreated frame = new userCreated();
+					UserCreated frame = new UserCreated();
 					frame.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
@@ -32,7 +32,7 @@ public class userCreated extends JFrame {
 		});
 	}
 
-	public userCreated() {
+	public UserCreated() {
 		setResizable(false);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 200, 200);

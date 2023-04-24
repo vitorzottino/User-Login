@@ -17,7 +17,7 @@ import javax.swing.SwingConstants;
 import javax.swing.border.EmptyBorder;
 
 import infos.Vision;
-import newUser.newUser;
+import newUser.NewUser;
 
 public class App extends JFrame {
 
@@ -25,7 +25,7 @@ public class App extends JFrame {
 	private JTextField txtUsername;
 	private JTextField txtPassword;
 
-	newUser userpage = new newUser();
+	NewUser userpage = new NewUser();
 	JLabel errorLabel = new JLabel();
 	Usuario user = new Usuario();
 
@@ -101,8 +101,8 @@ public class App extends JFrame {
 				} else {
 					errorLabel.setText(null);
 
-					if (newUser.userMap.containsKey(txtUsername.getText())) {
-						if (newUser.userMap.get(txtUsername.getText()).getPassword().equals(txtPassword.getText())) {
+					if (NewUser.userMap.containsKey(txtUsername.getText())) {
+						if (NewUser.userMap.get(txtUsername.getText()).getPassword().equals(txtPassword.getText())) {
 							new Vision().setVisible(true);
 							dispose();
 						} else {

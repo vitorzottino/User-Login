@@ -17,11 +17,11 @@ import javax.swing.JTextField;
 import javax.swing.SwingConstants;
 import javax.swing.border.EmptyBorder;
 
-import alerts.userCreated;
+import alerts.UserCreated;
 import login.App;
 import login.Usuario;
 
-public class newUser extends JFrame {
+public class NewUser extends JFrame {
 
 	private JPanel contentPane;
 	private JTextField txtUsername;
@@ -36,7 +36,7 @@ public class newUser extends JFrame {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					newUser frame = new newUser();
+					NewUser frame = new NewUser();
 					frame.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
@@ -45,7 +45,7 @@ public class newUser extends JFrame {
 		});
 	}
 
-	public newUser() {
+	public NewUser() {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 510, 320);
 		setResizable(false);
@@ -97,7 +97,7 @@ public class newUser extends JFrame {
 						user.username = txtUsername.getText();
 						user.password = textPassword.getText();
 						userMap.put(user.username, user);
-						new userCreated().setVisible(true);
+						new UserCreated().setVisible(true);
 						dispose();
 					} else {
 						errorLabel.setText("User Already Exists!");
